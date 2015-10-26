@@ -1,0 +1,87 @@
+.background    { background: rgb(22, 22, 30);
+                 background-repeat: repeat;
+                 background-size: 600px, 350px;
+                 table-layout: fixed;
+                 border-spacing: 0;   }
+
+.background td { padding: 0;          }
+
+.lava          { background: orangered;
+                 -webkit-border-radius: 70px;
+                 -moz-border-radius: 70px;
+                  border-radius: 70px;   
+                 -webkit-box-shadow:0px 0px 20px crimson;
+                 -moz-box-shadow: 0px 0px 20px crimson;
+                  box-shadow: 0px 0px 20px crimson; }
+
+.flood          { background: orangered;
+                 -webkit-box-shadow:0px 0px 20px crimson;
+                 -moz-box-shadow: 0px 0px 20px crimson;
+                 box-shadow: 0px 0px 20px crimson; }
+
+.wall          { background: url("http://www.mariowiki.com/images/3/39/Donut_Lift.png"); 
+                 background-size: 20px, 20px;
+                 background-repeat: no-repeat;}
+
+.walltwo       { background: url("https://tcrf.net/images/3/3c/NSMBWunusedtex.png");  
+                 background-size: 20px, 20px;
+               background-repeat: no-repeat;}
+
+.wallthree     { background: url("http://rpgmaker.net/media/content/users/930/locker/COmask.gif");  
+                 background-repeat: no-repeat;
+                 background-size: 20px, 20px;}
+
+.actor         { position: absolute;  }
+.coin          { background: url("http://www.mariowiki.com/images/thumb/d/d6/MKDS_Coin.gif/40px-MKDS_Coin.gif"); 
+		  background-size: 15px, 25px; }
+
+.player        {
+                  background: whitesmoke;
+                 -webkit-border-radius: 70px;
+                 -moz-border-radius: 70px;
+                  border-radius: 70px;   
+                 -webkit-box-shadow:0px 0px 20px aliceblue;
+                 -moz-box-shadow: 0px 0px 20px aliceblue;
+                  box-shadow: 0px 0px 20px aliceblue;  }
+
+.bouncer       {  background: khaki;
+                 -webkit-border-radius: 70px;
+                 -moz-border-radius: 70px;
+                  border-radius: 70px;   
+                 -webkit-box-shadow:0px 0px 20px khaki;
+                 -moz-box-shadow: 0px 0px 20px khaki;
+                  box-shadow: 0px 0px 20px khaki;   }
+
+.enemy         { background: rgb(101, 50, 33);  }
+
+.game          {
+  overflow: hidden;
+  max-width: 600px;
+  max-height: 450px;
+  position: relative; }
+
+.lost .player  {
+                  background: darkred;
+                 -webkit-border-radius: 70px;
+                 -moz-border-radius: 70px;
+                  border-radius: 70px;   
+                 -webkit-box-shadow:0px 0px 20px goldenrod;
+                 -moz-box-shadow: 0px 0px 20px goldenrod;
+                  box-shadow: 0px 0px 20px goldenrod;  }
+
+.won .player   {
+                  background: cyan;
+                 -webkit-border-radius: 70px;
+                 -moz-border-radius: 70px;
+                  border-radius: 70px;   
+                 -webkit-box-shadow:0px 0px 20px skyblue;
+                 -moz-box-shadow: 0px 0px 20px skyblue;
+                  box-shadow: 0px 0px 20px skyblue;  
+
+                  animation: blink 1s steps(5, start) infinite;
+                 -webkit-animation: blink 1s steps(5, start) infinite;
+    }
+
+.audio { 
+   display:none;
+}
