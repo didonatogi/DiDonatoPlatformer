@@ -67,12 +67,14 @@ var actorChars = {
     context.fillRect(0, 0, canvas.width, canvas.height);
    }
 
-   //function startGame() {
+   function startGame() {
     //clears the timer to end the animation, and sets up the board for the next game
     //alert("Starting!");
+    clearInterval(timer);
+    context.globalCompositeOperation = "source-over";
+    clearScreen("black");
 
-
-   //}
+   }
 
    function init() {
     //initializes the canvas and buttons, and starts the animation
@@ -618,9 +620,6 @@ function runGame(plans, Display) {
   function startLevel(n) {
     // Create a new level using the nth element of array plans
     // Pass in a reference to Display function, DOMDisplay (in index.html).
-    clearInterval(timer);
-    context.globalCompositeOperation = "source-over";
-    clearScreen("black");
     runLevel(new Level(plans[n]), Display, function(status) {
       if (status == "lost")
         startLevel(n);
