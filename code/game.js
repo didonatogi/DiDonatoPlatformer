@@ -8,6 +8,7 @@ var actorChars = {
 
 };
 
+
    var canvas;
    var context;
    var particles;
@@ -85,9 +86,6 @@ var actorChars = {
     makeParticles();
     timer = setInterval(moveParticles, 100);
   }
-
-
-
 
 
 function Level(plan) {
@@ -633,11 +631,9 @@ function runGame(plans, Display) {
 }
 
 
-
-function degreesToRadians(degrees) {
+    function degreesToRadians(degrees) {
       //converts from degrees to radians and returns
       return (degrees * Math.PI)/180;
     }
 
-window.onload = init;
-
+     window.onload = init;

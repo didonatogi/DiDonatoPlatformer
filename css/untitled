@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Mastermind</title>
+<meta charset="utf-8">
+<script>
+
+<style>
+
+body { font-family: Verdana, Helvetica, sans-serif; }
+canvas { border: 1px solid black;                   }
+
+</style>
+
+   var canvas;
+   var context;
+   var particles;
+   var timer;
+
+  function makeParticles() {
+    //create an array of particles for our opening animation
+    particles = [];
+    for(var i = 0; i < 30; i++)
+    {
+      particles.push(new createParticle());
+    }
+  }
+
+  function createParticle()
+  {
+    //the constructor for a single particle, with random starting x+y, velocity, color, and radius
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.vx = Math.random()*10-5;
+    this.vy = Math.random()*10-5;
+    var colors = ["red", "green", "blue", "orange", "purple", "yellow", "white"];
+    this.color = colors[Math.floor(Math.random()*colors.length)];
+    this.radius = 15;
+  }
+
+  function moveParticles() {
+    //partially clear the screen to fade previous circles, and draw a new particle at each new coordinate
+    context.globalCompositeOperation = "source-over";
+    context.fillStyle = "rgba(0, 0, 0, 0.3)";
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.globalCompositeOperation = "lighter";
+    context.fillStyle = "white";
+    context.font = "2em Lucida Grande";
+    context.textAlign = "center";
+    context.fillText("click to begin", canvas.width/2, canvas.height/3);
+    for(var i = 0; i < particles.length; i++)
+    {
+      var p = particles[i];
+      context.beginPath();
+      context.arc(p.x, p.y, p.radius, 0, degreesToRadians(360), true);
+      context.fillStyle = p.color;
+      context.fill();
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x < -50) p.x = canvas.width+50;
+      if(p.y < -50) p.y = canvas.height+50;
+      if(p.x > canvas.width+50) p.x = -50;
+      if(p.y > canvas.height+50) p.y = -50;
+    }
+  }
+
+  function clearScreen(color) {
+    //clears the screen and fills with the color of choice
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = color;
+    context.fillRect(0, 0, canvas.width, canvas.height);
+   }
+
+   function startGame() {
+    //clears the timer to end the animation, and sets up the board for the next game
+    //alert("Starting!");
+    clearInterval(timer);
+    context.globalCompositeOperation = "source-over";
+    clearScreen("black");
+
+   }
+
+   function init() {
+    //initializes the canvas and buttons, and starts the animation
+    canvas = document.getElementById("gameCanvas");
+    context = canvas.getContext("2d");
+    var startButton = document.getElementById("startButton");
+    startButton.onclick = startGame;
+    makeParticles();
+    timer = setInterval(moveParticles, 100);
+  }
+
+  // Arrow key codes for readibility
+var arrowCodes = {37: "left", 38: "up", 39: "right"};
+
+// Translate the codes pressed from a key event
+function trackKeys(codes) {
+  var pressed = Object.create(null);
+
+  // alters the current "pressed" array which is returned from this function. 
+  // The "pressed" variable persists even after this function terminates
+  // That is why we needed to assign it using "Object.create()" as 
+  // otherwise it would be garbage collected
+
+  function handler(event) {
+    if (codes.hasOwnProperty(event.keyCode)) {
+      // If the event is keydown, set down to true. Else set to false.
+      var down = event.type == "keydown";
+      pressed[codes[event.keyCode]] = down;
+      // We don't want the key press to scroll the browser window, 
+      // This stops the event from continuing to be processed
+      event.preventDefault();
+    }
+  }
+  addEventListener("keydown", handler);
+  addEventListener("keyup", handler);
+  return pressed;
+}
+
+   function degreesToRadians(degrees) {
+      //converts from degrees to radians and returns
+      return (degrees * Math.PI)/180;
+    }
+
+   window.onload = init;
+
+   </script>
+   </head>
+   <body>
+
+   <canvas id="gameCanvas" width="500" height="400"></canvas>
+   <input type="button" id="startButton" value="Start the Game">
+
+   </body>
+   </html>
