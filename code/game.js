@@ -1,14 +1,3 @@
-var actorChars = {
-  "@": Player,
-  "o": Coin, 
-  "=": Lava, "|": Lava, "v": Lava, "r": Lava,  
-  "f": Flood,
-  "b": Bouncer,
-  "k": Enemy
-
-};
-
-
    var canvas;
    var context;
    var particles;
@@ -30,9 +19,7 @@ var actorChars = {
     this.y = Math.random()*canvas.height;
     this.vx = Math.random()*10-5;
     this.vy = Math.random()*10-5;
-    var colors = ["red", "green", "blue", "orange", "purple", "yellow", "white"];
-    this.color = colors[Math.floor(Math.random()*colors.length)];
-    this.radius = 15;
+    this.radius = 3;
   }
 
   function moveParticles() {
@@ -44,7 +31,7 @@ var actorChars = {
     context.fillStyle = "white";
     context.font = "2em Lucida Grande";
     context.textAlign = "center";
-    context.fillText("click to begin", canvas.width/2, canvas.height/3);
+    context.fillText("Orbission", canvas.width/2, canvas.height/3);
     for(var i = 0; i < particles.length; i++)
     {
       var p = particles[i];
@@ -64,8 +51,7 @@ var actorChars = {
   function clearScreen(color) {
     //clears the screen and fills with the color of choice
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = color;
-    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.visibility=none;
    }
 
    function startGame() {
@@ -74,7 +60,6 @@ var actorChars = {
     clearInterval(timer);
     context.globalCompositeOperation = "source-over";
     clearScreen("black");
-
    }
 
    function init() {
@@ -87,6 +72,17 @@ var actorChars = {
     timer = setInterval(moveParticles, 100);
   }
 
+
+
+var actorChars = {
+  "@": Player,
+  "o": Coin, 
+  "=": Lava, "|": Lava, "v": Lava, "r": Lava,  
+  "f": Flood,
+  "b": Bouncer,
+  "k": Enemy
+
+};
 
 function Level(plan) {
   // Use the length of a single row to set the width of the level
@@ -630,10 +626,10 @@ function runGame(plans, Display) {
   startLevel(0);
 }
 
-
     function degreesToRadians(degrees) {
       //converts from degrees to radians and returns
       return (degrees * Math.PI)/180;
     }
 
      window.onload = init;
+

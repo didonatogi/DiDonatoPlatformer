@@ -1,4 +1,4 @@
-.background    { background: rgb(22, 22, 30);
+.background    { background: rgb(2, 2, 2);
                  background-repeat: repeat;
                  background-size: 600px, 350px;
                  table-layout: fixed;
@@ -6,9 +6,8 @@
 
 .background td { padding: 0; }
 
-body { font-family: Verdana, Helvetica, sans-serif; }
-
-canvas { border: 1px solid black;           }
+body { font-family: Verdana, Helvetica, sans-serif; 
+      background-color: rgb(2, 2, 2);}
 
 .lava          { background: orangered;
                  -webkit-border-radius: 70px;
